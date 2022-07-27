@@ -1,40 +1,67 @@
 class Person {
-  #name;
-  #officeAreaCode;
-  #officeNumber;
-  constructor(name, areaCode, number) {
-    this.#name = name;
-    this.#officeAreaCode = areaCode;
-    this.#officeNumber = number;
-  }
+	#name;
+	#telephoneNumber;
+	constructor(name, areaCode, number) {
+		this.#name = name;
+		this.#telephoneNumber = new TelephoneNumber(areaCode, number);
+	}
 
-  get name() {
-    return this.#name;
-  }
+	get name() {
+		return this.#name;
+	}
 
-  set name(arg) {
-    this.#name = arg;
-  }
+	set name(arg) {
+		this.#name = arg;
+	}
 
-  get telephoneNumber() {
-    return `(${this.officeAreaCode}) ${this.officeNumber}`;
-  }
+	get telephoneNumber() {
+		return this.#telephoneNumber.toString;
+	}
 
-  get officeAreaCode() {
-    return this.#officeAreaCode;
-  }
+	get officeAreaCode() {
+		return this.#telephoneNumber.areaCode;
+	}
 
-  set officeAreaCode(arg) {
-    this.#officeAreaCode = arg;
-  }
+	set officeAreaCode(arg) {
+		this.#telephoneNumber.areaCode = arg;
+	}
 
-  get officeNumber() {
-    return this.#officeNumber;
-  }
+	get officeNumber() {
+		return this.#telephoneNumber.number;
+	}
 
-  set officeNumber(arg) {
-    this.#officeNumber = arg;
-  }
+	set officeNumber(arg) {
+		this.#telephoneNumber.number = arg;
+	}
+}
+
+class TelephoneNumber {
+	#areaCode;
+	#number;
+	constructor(area, number) {
+		this.#areaCode = area;
+		this.#number = number;
+	}
+
+	get areaCode() {
+		return this.#areaCode;
+	}
+
+	set areaCode(value) {
+		this.#areaCode = value;
+	}
+
+	get number() {
+		this.#number;
+	}
+
+	set number(value) {
+		this.#number = value;
+	}
+
+	get toString() {
+		return `(${this.#areaCode}) ${this.#number}`;
+	}
 }
 
 const person = new Person('엘리', '010', '12345678');
