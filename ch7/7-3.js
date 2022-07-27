@@ -1,15 +1,32 @@
 export class Order {
-  constructor(data) {
-    this.priority = data.priority;
-  }
+	constructor(data) {
+		this.priority = data.priority;
+	}
+
+	isHighPriority() {
+		return 'high' === this.priority || 'rush' === this.priority;
+	}
 }
 
-const orders = [
-  new Order({ priority: 'normal' }),
-  new Order({ priority: 'high' }),
-  new Order({ priority: 'rush' }),
-];
+class Priority {
+	#value;
+	constructor(value) {
+		if (Priority.legalValues().includes(value)) {
+			this.#value = value;
+		} else {
+			throw new Error('없음');
+		}
+	}
 
-const highPriorityCount = orders.filter(
-  (o) => 'high' === o.priority || 'rush' === o.priority
-).length;
+	static legalValues() {
+		return ['low', 'normal', 'high', 'rush'];
+	}
+}
+
+const orders = [new Order({ priority: 'normal' }), new Order({ priority: 'high' }), new Order({ priority: 'rush' })];
+
+const highPriorityCount = orders.filter((o) => o.isHighPriority).length;
+
+console.log('====================================');
+console.log(highPriorityCount);
+console.log('====================================');
