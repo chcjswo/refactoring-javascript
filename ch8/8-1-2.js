@@ -25,12 +25,13 @@ export class AccountType {
 
 	overdraftCharge(daysOverdrawn) {
 		if (!this.isPremium) {
-      return this._daysOverdrawn * 1.75;
-    }
+			return this._daysOverdrawn * 1.75;
+		}
 
 		if (this.isPremium) {
 			const baseCharge = 10;
 			if (daysOverdrawn <= 7) return baseCharge;
 			else return baseCharge + (daysOverdrawn - 7) * 0.85;
 		}
+	}
 }
