@@ -1,17 +1,32 @@
 export class Employee {
-  constructor(name, typeCode) {
-    this._name = name;
-    this._typeCode = typeCode;
-  }
-  get name() {
-    return this._name;
-  }
+	constructor(name, typeCode) {
+		this._name = name;
+		this._typeCode = typeCode;
+	}
+	get name() {
+		return this._name;
+	}
 
-  get type() {
-    return Employee.legalTypeCodes[this._typeCode];
-  }
+	get type() {
+		return Employee.legalTypeCodes[this._typeCode];
+	}
 
-  static get legalTypeCodes() {
-    return { E: 'Engineer', M: 'Manager', S: 'Salesman' };
-  }
+	static get legalTypeCodes() {
+		return { E: 'Engineer', M: 'Manager', S: 'Salesman' };
+	}
+
+	static createEngineer(name) {
+		return new Employee(name, 'E');
+	}
+
+	static createSeniorEngineer(name) {
+		return new Employee(name, 'SE');
+	}
+
+	static createManager(name) {
+		return new Employee(name, 'M');
+	}
 }
+
+const employee1 = Employee.createEngineer('tony');
+const employee2 = Employee.createManager('chcjswo');
