@@ -7,6 +7,8 @@ describe('printOwing', () => {
 			customer: '엘리',
 		};
 		const expected = '***********************\n' + '**** Customer Owes ****\n' + '***********************\n' + 'name: 엘리\n' + 'amount: 7\n' + 'due: 2022. 9. 6.';
+		console.log('expected', expected);
+		printOwing(invoice);
 		expect(printOwing(invoice)).toBe(expected);
 	});
 });
