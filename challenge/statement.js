@@ -5,7 +5,14 @@ export function statement(invoice, plays) {
 	return renderPlainText(statement, plays);
 }
 
-function renderPlainText(statement, plays) {
+export function htmlStatement(invoice, plays) {
+	const statement = createStatement(invoice, plays);
+	return renderHtmlText(statement, plays);
+}
+
+function renderHtmlText(statement) {}
+
+function renderPlainText(statement) {
 	let result = `청구 내역 (고객명: ${statement.customer})\n`;
 
 	for (let perf of statement.performances) {
